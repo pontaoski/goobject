@@ -1,8 +1,6 @@
 package main
 
 import (
-	"reflect"
-
 	. "github.com/pontaoski/goobject/libgoobject"
 )
 
@@ -11,7 +9,7 @@ func init() {
 		AllowInherit: true,
 		Signals:      Signals{"oof"},
 		Properties: Properties{
-			"color": reflect.TypeOf(0),
+			"color": Int64,
 		},
 		Functions: Functions{
 			"yeet": func() {
@@ -19,7 +17,13 @@ func init() {
 			},
 		},
 	})
-	RegisterInheritedClass("Test", "Example", "Test", "Ouch", GOObjectClass{})
+	RegisterInheritedClass("Test", "Example", "Test", "Ouch", GOObjectClass{
+		AllowInherit: false,
+		Signals:      Signals{"yeet"},
+		Properties: Properties{
+			"color_alt": Int64,
+		},
+	})
 }
 
 func main() {
